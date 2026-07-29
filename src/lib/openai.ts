@@ -16,7 +16,9 @@ function getApiKey() {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error(
-      "OPENAI_API_KEY is not set. Add it to .env.local and restart the dev server."
+      "OPENAI_API_KEY is not set. Locally, add it to .env.local and restart " +
+        "`npm run dev`. In production, set it in your host's Environment " +
+        "Variables (e.g. Vercel → Settings → Environment Variables) and redeploy."
     );
   }
   return apiKey;

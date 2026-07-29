@@ -20,7 +20,9 @@ function getApiKey() {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     throw new Error(
-      "GEMINI_API_KEY is not set. Add it to .env.local and restart the dev server."
+      "GEMINI_API_KEY is not set. Locally, add it to .env.local and restart " +
+        "`npm run dev`. In production, set it in your host's Environment " +
+        "Variables (e.g. Vercel → Settings → Environment Variables) and redeploy."
     );
   }
   return apiKey;

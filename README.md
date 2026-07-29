@@ -55,6 +55,32 @@ npm run dev
 
 Open http://localhost:3000.
 
+## 4. Deploying
+
+`.env.local` is **not** deployed (it's gitignored). If your live site shows
+`"... _API_KEY is not set"`, it's because the host has no environment variables.
+Set them in your host and **redeploy** — env vars only apply to builds that run
+*after* they're saved.
+
+**Vercel:** Settings → Environment Variables → add each of the following (for
+Production + Preview), then Deployments → ⋯ → Redeploy.
+
+**Netlify:** Site configuration → Environment variables → add them → Trigger a
+new deploy.
+
+| Variable | Required | Value |
+| --- | --- | --- |
+| `GEMINI_API_KEY` | ✅ | your Gemini key |
+| `GEMINI_MODEL` | optional | `gemini-2.5-flash` |
+| `OPENAI_API_KEY` | ✅ | your OpenAI key |
+| `OPENAI_IMAGE_MODEL` | optional | `gpt-image-1` |
+| `OPENAI_IMAGE_SIZE` | optional | `1024x1024` |
+| `OPENAI_IMAGE_QUALITY` | optional | `medium` |
+
+> `/api/generate-image` is unauthenticated and calls a **paid** OpenAI model.
+> Before exposing it publicly, add rate limiting/auth or set a spend cap on the
+> OpenAI account.
+
 ## Project structure
 
 ```
